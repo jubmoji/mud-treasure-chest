@@ -6,9 +6,9 @@ import { Counter } from "../codegen/Tables.sol";
 
 contract IncrementSystem is System {
   function increment() public returns (uint32) {
-    uint32 counter = Counter.get();
+    uint32 counter = Counter.get(_msgSender());
     uint32 newValue = counter + 1;
-    Counter.set(newValue);
+    Counter.set(_msgSender(), newValue);
     return newValue;
   }
 }
